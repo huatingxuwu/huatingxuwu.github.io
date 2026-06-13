@@ -12,7 +12,7 @@ hero:
       link: /first-article
     - theme: alt
       text: GitHub
-      link: https://github.com/
+      link: https://github.com/huatingxuwu
 
 features:
   - title: 技术笔记
