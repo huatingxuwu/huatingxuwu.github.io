@@ -8,11 +8,15 @@ It may be assumed that we efface the effects of illegal acts in our own office f
 ### 1.2
 Provide a formal definition of the Gen, Enc, and Dec algorithms for the mono-alphabetic substitution cipher.
 
-$$\mathcal{M} = \text{finite alphabet}, \quad \text{Perm}(\mathcal{M}) = \text{set of all permutations over } \mathcal{M}$$
+$$
+\mathcal{M} = \text{finite alphabet},
+\qquad
+\operatorname{Perm}(\mathcal{M}) = \text{set of all permutations over } \mathcal{M}.
+$$
 
 ### 1. $\text{Gen}$
 
-- **Output**: $k \leftarrow \text{Perm}(\mathcal{M})$
+- **Output**: $k \leftarrow \operatorname{Perm}(\mathcal{M})$
 
 ### 2. $\text{Enc}$
 
@@ -20,22 +24,40 @@ $$\mathcal{M} = \text{finite alphabet}, \quad \text{Perm}(\mathcal{M}) = \text{s
     
 - **Output**: Ciphertext $C = c_1 c_2 \dots c_n$ ($c_i \in \mathcal{M}$), where:
     
-    $$c_i = k(m_i) \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    c_i = k(m_i)
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
 ### 3. $\text{Dec}$
 
 - **Input**: Key $k$, Ciphertext $C = c_1 c_2 \dots c_n$ ($c_i \in \mathcal{M}$)
     
 - **Output**: Plaintext $M = m_1 m_2 \dots m_n$ ($m_i \in \mathcal{M}$), where:
     
-    $$m_i = k^{-1}(c_i) \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    m_i = k^{-1}(c_i)
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
 ### Correctness
 
-$$\forall k \leftarrow \text{Gen}, \forall M \in \mathcal{M}^*: \quad \text{Dec}_k(\text{Enc}_k(M)) = M$$
+$$
+\forall k \leftarrow \mathrm{Gen},\ \forall M \in \mathcal{M}^*:
+\qquad
+\mathrm{Dec}_k(\mathrm{Enc}_k(M)) = M.
+$$
 
 ### 1.3 
 Provide a formal definition of the `Gen`, `Enc`, and `Dec` algorithms for the Vigenère cipher. (Note: there are several plausible choices for `Gen`; choose one.)
 
-$$\mathcal{M} = \mathbb{Z}_{26}^n, \quad \mathcal{K} = \mathbb{Z}_{26}^\ell \quad (\text{where } \ell \text{ is a fixed key length})$$
+$$
+\mathcal{M} = \mathbb{Z}_{26}^n,
+\qquad
+\mathcal{K} = \mathbb{Z}_{26}^{\ell}
+\qquad
+(\text{where } \ell \text{ is a fixed key length}).
+$$
 
 ### 1. $\text{Gen}$
 
@@ -48,7 +70,11 @@ $$\mathcal{M} = \mathbb{Z}_{26}^n, \quad \mathcal{K} = \mathbb{Z}_{26}^\ell \qua
     
 - **Output**: Ciphertext $C = c_1 c_2 \dots c_n$ ($c_i \in \mathbb{Z}_{26}$), where:
     
-    $$c_i = [m_i + k_{(i-1 \bmod \ell) + 1}] \bmod 26 \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    c_i = \left(m_i + k_{((i-1) \bmod \ell) + 1}\right) \bmod 26
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
     
 
 ### 3. $\text{Dec}$
@@ -57,12 +83,20 @@ $$\mathcal{M} = \mathbb{Z}_{26}^n, \quad \mathcal{K} = \mathbb{Z}_{26}^\ell \qua
     
 - **Output**: Plaintext $M = m_1 m_2 \dots m_n$ ($m_i \in \mathbb{Z}_{26}$), where:
     
-    $$m_i = [c_i - k_{(i-1 \bmod \ell) + 1}] \bmod 26 \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    m_i = \left(c_i - k_{((i-1) \bmod \ell) + 1}\right) \bmod 26
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
     
 
 ### Correctness
 
-$$\forall k \in \mathcal{K}, \forall M \in \mathcal{M}: \quad \text{Dec}_k(\text{Enc}_k(M)) = M$$
+$$
+\forall k \in \mathcal{K},\ \forall M \in \mathcal{M}:
+\qquad
+\mathrm{Dec}_k(\mathrm{Enc}_k(M)) = M.
+$$
 
 ### 1.4
 Say you are given a ciphertext that corresponds to English-language text that was encrypted using either the shift cipher or the Vigenère cipher with period greater than 1. How could you tell which was the case?
@@ -76,9 +110,11 @@ By calculating the **Index of Coincidence (IC)** of the ciphertext. The IC measu
 Implement the attacks described in this chapter for the shift cipher and the Vigenère cipher.
 
 ### 1.6
-The shift and Vigenère ciphers can also be defined on the 256-character alphabet consisting of all possible bytes (8-bit strings), and using XOR instead of modular addition
-(a)Provide a formal definition of both schemes in this case.
-(b)Discuss how the attacks we have shown in this chapter can be modified to break these schemes.
+The shift and Vigenère ciphers can also be defined on the 256-character alphabet consisting of all possible bytes (8-bit strings), and using XOR instead of modular addition.
+
+(a) Provide a formal definition of both schemes in this case.
+
+(b) Discuss how the attacks we have shown in this chapter can be modified to break these schemes.
 #### (a) Formal Definitions (XOR variants over $\{0,1\}^8$)
 
 Let $\mathcal{B} = \{0,1\}^8$ denote the set of all possible bytes.
@@ -89,11 +125,19 @@ Let $\mathcal{B} = \{0,1\}^8$ denote the set of all possible bytes.
     
 - **$\text{Enc}_k(M)$**: Given plaintext $M = m_1 m_2 \dots m_n$ ($m_i \in \mathcal{B}$), compute ciphertext $C = c_1 c_2 \dots c_n$ where:
     
-    $$c_i = m_i \oplus k \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    c_i = m_i \oplus k
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
     
 - **$\text{Dec}_k(C)$**: Given ciphertext $C = c_1 c_2 \dots c_n$, compute plaintext $M = m_1 m_2 \dots m_n$ where:
     
-    $$m_i = c_i \oplus k \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    m_i = c_i \oplus k
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
     
 
 #### 2. Vigenère Cipher Variant (Multi-Byte XOR)
@@ -104,11 +148,19 @@ Let $\ell$ be a fixed key length.
     
 - **$\text{Enc}_k(M)$**: Given plaintext $M = m_1 m_2 \dots m_n$ ($m_i \in \mathcal{B}$), compute ciphertext $C = c_1 c_2 \dots c_n$ where:
     
-    $$c_i = m_i \oplus k_{(i-1 \bmod \ell) + 1} \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    c_i = m_i \oplus k_{((i-1) \bmod \ell) + 1}
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
     
 - **$\text{Dec}_k(C)$**: Given ciphertext $C = c_1 c_2 \dots c_n$, compute plaintext $M = m_1 m_2 \dots m_n$ where:
     
-    $$m_i = c_i \oplus k_{(i-1 \bmod \ell) + 1} \quad \forall i \in \{1, \dots, n\}$$
+    $$
+    m_i = c_i \oplus k_{((i-1) \bmod \ell) + 1}
+    \qquad
+    \forall i \in \{1,\dots,n\}.
+    $$
 #### (b) Modifications to the Attacks
 
 #### 1. Attacking the Shift Cipher Variant
@@ -128,12 +180,18 @@ The attack remains a two-step process: finding the period $\ell$, then solving e
     
     - **Kasiski Examination**: Look for identical, repeating multi-byte sequences in the ciphertext. The distances between these repetitions will likely be multiples of the period $\ell$.
         
-    - **Index of Coincidence (IC)**: The formula for IC adapts to the larger alphabet: $\text{IC} = \sum_{i=0}^{255} \frac{f_i(f_i-1)}{n(n-1)}$, where $f_i$ is the count of byte value $i$. For an arbitrary string of English text mapped via ASCII to bytes, the expected $\text{IC}$ is still significantly higher than that of a uniform distribution over 256 bytes ($\frac{1}{256} \approx 0.0039$). By testing stream offsets $1, 2, 3, \dots$ and extracting every $\ell$-th byte, the correct period $\ell$ will yield sub-ciphertexts with an abnormally high IC matching English text baseline properties.
+    - **Index of Coincidence (IC)**: The formula for IC adapts to the larger alphabet:
+
+        $$
+        \operatorname{IC} = \sum_{i=0}^{255} \frac{f_i(f_i-1)}{n(n-1)},
+        $$
+
+        where $f_i$ is the count of byte value $i$. For an arbitrary string of English text mapped via ASCII to bytes, the expected $\operatorname{IC}$ is still significantly higher than that of a uniform distribution over 256 bytes ($1/256 \approx 0.0039$). By testing stream offsets $1,2,3,\dots$ and extracting every $\ell$-th byte, the correct period $\ell$ will yield sub-ciphertexts with an abnormally high IC matching English text baseline properties.
         
 - **Recovering the Key**: Once $\ell$ is determined, partition the ciphertext into $\ell$ slices. For each slice $j \in \{1, \dots, \ell\}$, apply the modified frequency analysis or 256-key brute-force described above to recover the individual key byte $k_j$.
 
 ### 1.7
-The index of coincidence method relies on a known value for the sum of the _squares_ of plaintext-letter frequencies (cf. Equation (1.1)). Why would it not work using the sum Σ_i pi_ itself?
+The index of coincidence method relies on a known value for the sum of the _squares_ of plaintext-letter frequencies (cf. Equation (1.1)). Why would it not work using the sum $\sum_i p_i$ itself?
 
 The Index of Coincidence relies on the sum of squares $\sum_{i} p_i^2$ because it measures the probability of a specific event: **randomly picking two characters from a text and having them match.**
 
@@ -141,16 +199,22 @@ The Index of Coincidence relies on the sum of squares $\sum_{i} p_i^2$ because i
 
 By definition, the probabilities of all possible outcomes in any probability distribution must sum to 1:
 
-$$\sum_{i} p_i = 1$$
+$$
+\sum_i p_i = 1.
+$$
 ### 2. Squaring captures "Unevenness"
 
 To distinguish between structured language (like English) and random noise (like ciphertext), we need a metric that reacts to how heavily weighted or flat the distribution is.
 
 - **In a uniform distribution**, every byte or letter has the same probability $p_i = \frac{1}{N}$. The sum of squares yields its minimum possible value:
     
-    $$\sum_{i=1}^{N} \left(\frac{1}{N}\right)^2 = N \cdot \frac{1}{N^2} = \frac{1}{N}$$
+    $$
+    \sum_{i=1}^{N} \left(\frac{1}{N}\right)^2
+    = N \cdot \frac{1}{N^2}
+    = \frac{1}{N}.
+    $$
     
-- **In a skewed distribution** (natural language), a few characters have very high $p_i$ values Squaring these larger numbers disproportionately inflates the sum, driving the total $\sum_{i} p_i^2$ significantly higher than $\frac{1}{N}$.
+- **In a skewed distribution** (natural language), a few characters have very high $p_i$ values. Squaring these larger numbers disproportionately inflates the sum, driving the total $\sum_i p_i^2$ significantly higher than $1/N$.
     
 Without the exponent, you cannot measure this dispersion, making it impossible to detect whether a distribution is flat or spiked.
 
@@ -180,7 +244,7 @@ For all three ciphers, the key is recovered by exploiting the deterministic, cha
 
 - **How to break**: The key $k$ is a full permutation table mapping each element of the alphabet $\mathcal{M}$ to a unique ciphertext counterpart. To recover the entire table, you must force the oracle to encrypt every unique character in the alphabet.
     
-- **Exact plaintexts needed**: **$|\mathcal{M}|$ characters.
+- **Exact plaintexts needed**: **$|\mathcal{M}|$ characters**.
     
 - **Method**: Query a single message string containing every character of the alphabet exactly once (e.g., $M = \text{"ABC...Z"}$).
     
@@ -212,7 +276,7 @@ For all three ciphers, the key is recovered by exploiting the deterministic, cha
     
 - **Method**: Query a long string consisting entirely of zeros.
     
-    - The resulting ciphertext will simply be the key repeated over and over ($C = k || k || k \dots$).
+    - The resulting ciphertext will simply be the key repeated over and over ($C = k \,\|\, k \,\|\, k \,\|\, \cdots$).
         
     - The period $\ell$ is immediately visible as the exact distance at which the ciphertext characters begin to repeat. Once $\ell$ is identified from the pattern, the first $\ell$ characters of the ciphertext reveal the key.
     - 
@@ -231,8 +295,13 @@ Let the ciphertext be $C = c_1 c_2 c_3 c_4$.
     
     The attacker computes the modular distance between consecutive ciphertext characters:
     
-    $$\Delta_1 = (c_2 - c_1) \bmod 26$$
-    $$\Delta_2 = (c_3 - c_2) \bmod 26$$$$\Delta_3 = (c_4 - c_3) \bmod 26$$
+    $$
+    \begin{aligned}
+    \Delta_1 &= (c_2 - c_1) \bmod 26, \\
+    \Delta_2 &= (c_3 - c_2) \bmod 26, \\
+    \Delta_3 &= (c_4 - c_3) \bmod 26.
+    \end{aligned}
+    $$
     
 2. **Compare with the candidate passwords:**
     
