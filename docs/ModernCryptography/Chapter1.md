@@ -1,3 +1,11 @@
+---
+title: 现代密码学第 1 章笔记
+date: 2026-07-08
+category: 现代密码学
+tags: [密码学, 学习笔记]
+description: 私钥加密、历史密码和现代密码学原则的学习笔记。
+---
+
 ## 1.1 Cryptography and Modern Cryptography
 
 ## 1.2 The Setting of Private-Key Encryption

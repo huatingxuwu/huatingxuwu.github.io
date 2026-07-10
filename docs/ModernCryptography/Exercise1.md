@@ -1,3 +1,11 @@
+---
+title: 现代密码学第 1 章习题
+date: 2026-07-08
+category: 现代密码学
+tags: [密码学, 习题]
+description: 《Introduction to Modern Cryptography》第 1 章习题整理。
+---
+
 ### 1.1
 Decrypt the ciphertext provided at the end of the section on mono-alphabetic substitution ciphers.
 
