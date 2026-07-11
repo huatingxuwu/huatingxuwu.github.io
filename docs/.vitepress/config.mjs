@@ -270,6 +270,8 @@ export default defineConfig({
         items: [
           { text: '第 1 章笔记', link: '/ModernCryptography/Chapter1' },
           { text: '第 1 章习题', link: '/ModernCryptography/Exercise1' },
+          { text: '第 2 章笔记', link: '/ModernCryptography/Chapter2' },
+          { text: '第 2 章习题', link: '/ModernCryptography/Exercise2' },
         ],
       },
     ],
@@ -289,6 +291,8 @@ export default defineConfig({
         items: [
           { text: '第 1 章笔记', link: '/ModernCryptography/Chapter1' },
           { text: '第 1 章习题', link: '/ModernCryptography/Exercise1' },
+          { text: '第 2 章笔记', link: '/ModernCryptography/Chapter2' },
+          { text: '第 2 章习题', link: '/ModernCryptography/Exercise2' },
         ],
       },
     ],
