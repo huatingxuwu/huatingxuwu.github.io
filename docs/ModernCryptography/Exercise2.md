@@ -1,3 +1,9 @@
+---
+title: 现代密码学 第2章习题
+date: 2026-07-11
+description: 第2章习题解答：完善保密性证明、一次一密、香农定理、Vigenère 密码分析等
+tags: [密码学, 习题]
+---
 ### 2.1
 #### Question
 Prove that, by redefining the key space, we may assume that the key generation algorithm `Gen` chooses a uniform key from the key space, without changing $\Pr[C = c \mid M = m]$ for any $m, c$.

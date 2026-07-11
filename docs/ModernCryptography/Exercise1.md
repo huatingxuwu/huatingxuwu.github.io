@@ -1,3 +1,9 @@
+---
+title: 现代密码学 第1章习题
+date: 2026-07-08
+description: 第1章习题解答：古典密码分析、频率攻击、Vigenère 密码破解等
+tags: [密码学, 习题]
+---
 ### 1.1
 #### Question
 Decrypt the ciphertext provided at the end of the section on mono-alphabetic substitution ciphers.

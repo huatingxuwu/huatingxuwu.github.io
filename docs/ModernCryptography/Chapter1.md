@@ -1,3 +1,9 @@
+---
+title: 现代密码学 第1章笔记
+date: 2026-07-08
+description: 古典密码学与现代密码学的基本概念、私钥加密设定与原则
+tags: [密码学, 笔记]
+---
 ## 1.1 Cryptography and Modern Cryptography
 ## 1.2 The Setting of Private-Key Encryption
 a procedure for generating keys (`Gen`), a procedure for encrypting (`Enc`), and a procedure for decrypting (`Dec`)

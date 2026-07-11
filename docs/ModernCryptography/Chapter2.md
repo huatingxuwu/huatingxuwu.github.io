@@ -1,3 +1,9 @@
+---
+title: 现代密码学 第2章笔记
+date: 2026-07-11
+description: 完善保密性定义、一次一密、香农定理及其局限性
+tags: [密码学, 笔记]
+---
 Modern *random-number generation* proceeds in two steps. First, a "pool" of high-entropy data is collected. (For our purposes a formal definition of entropy is not needed, and it suffices to think of entropy as a measure of unpredictability.) Next, this high-entropy data is processed to yield a sequence of nearly independent and unbiased bits. This second step is necessary since high-entropy data is not necessarily uniform.
 
 For example, suppose our high-entropy pool contains a sequence of *biased* bits, where 1 occurs with probability $p$ and 0 occurs with probability $1 - p$. A simple method extracts unbiased bits as follows: partition the bits into pairs, then if we see a 1 followed by a 0 we output 0, and if we see a 0 followed by a 1 we output 1. (If we see two 0s or two 1s in a row we output nothing, and simply move on to the next pair.) The probability that any pair results in a 0 is $p \cdot (1 - p)$, which is exactly equal to the probability that any pair results in a 1.

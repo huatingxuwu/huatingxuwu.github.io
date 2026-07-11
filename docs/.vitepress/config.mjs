@@ -283,7 +283,6 @@ export default defineConfig({
           { text: '全部文章', link: '/blog' },
           { text: '文章归档', link: '/archive' },
           { text: '标签索引', link: '/tags' },
-          { text: '第一篇文章', link: '/first-article' },
         ],
       },
       {
