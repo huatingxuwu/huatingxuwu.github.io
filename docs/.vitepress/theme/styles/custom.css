@@ -1,10 +1,93 @@
+/* ===== 图片 ===== */
 .vp-doc img {
   display: block;
   max-width: 100%;
   height: auto;
   margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* ===== 正文排版 ===== */
+.vp-doc p {
+  margin: 0.8em 0;
+  line-height: 1.8;
+  text-indent: 2em;
+}
+
+/* 列表和引用内的段落不需要缩进 */
+.vp-doc li p,
+.vp-doc blockquote p {
+  text-indent: 0;
+}
+
+/* ===== 标题 ===== */
+.vp-doc h2 {
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* ===== 链接 ===== */
+.vp-doc a {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--vp-c-brand-1);
+  transition: border-color 0.2s;
+}
+
+.vp-doc a:hover {
+  border-bottom-style: solid;
+}
+
+/* ===== 引用块 ===== */
+.vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.vp-doc blockquote p {
+  margin: 0.4em 0;
+}
+
+/* ===== 行内代码 ===== */
+.vp-doc :not(pre) > code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.875em;
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* ===== 表格 ===== */
+.vp-doc table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.vp-doc th {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 8px 12px;
+}
+
+/* ===== 列表 ===== */
+.vp-doc li {
+  margin: 0.25em 0;
+}
+
+/* ===== 博客列表 ===== */
 .blog-list {
   display: grid;
   gap: 16px;
@@ -34,6 +117,7 @@
 .blog-card p {
   margin: 0 0 12px;
   color: var(--vp-c-text-2);
+  text-indent: 0;
 }
 
 .blog-tags,
