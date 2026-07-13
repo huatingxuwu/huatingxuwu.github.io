@@ -42,11 +42,28 @@ function obsidianExtendsImages(md) {
   md.core.ruler.before('normalize', 'obsidian_extends_images', (state) => {
     state.src = state.src.replace(/!\[\[([^\]|]+?)(?:\|(\d+))?\]\]/g, (_, imagePath, width) => {
       const normalizedPath = imagePath.trim().replace(/\\/g, '/').replace(/^\/+/, '')
+      const filename = normalizedPath.split('/').pop()
       const widthAttr = width ? ` width="${Number(width)}"` : ''
 
-      return `<img src="/extends/${encodePath(normalizedPath)}" alt="${escapeHtml(normalizedPath)}"${widthAttr}>`
+      return `<figure><img src="/extends/${encodePath(normalizedPath)}" alt="${escapeHtml(normalizedPath)}"${widthAttr}><figcaption>${escapeHtml(filename)}</figcaption></figure>`
     })
   })
+}
+
+function figureCaptionImages(md) {
+  md.renderer.rules.image = (tokens, idx) => {
+    const token = tokens[idx]
+    const src = token.attrGet('src') || ''
+    const alt = token.attrGet('alt') || ''
+    const filename = src.split('/').pop() || alt
+    const caption = alt || filename
+
+    const attrs = token.attrs
+      ? token.attrs.filter(([k]) => k !== 'alt').map(([k, v]) => `${k}="${escapeHtml(v)}"`).join(' ')
+      : ''
+
+    return `<figure><img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" ${attrs}><figcaption>${escapeHtml(caption)}</figcaption></figure>`
+  }
 }
 
 function extendsAssetsPlugin() {
@@ -252,6 +269,7 @@ export default defineConfig({
     config: (md) => {
       md.use(mathjax3)
       md.use(obsidianExtendsImages)
+      md.use(figureCaptionImages)
     },
   },
 

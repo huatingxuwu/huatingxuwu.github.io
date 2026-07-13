@@ -1,5 +1,38 @@
 /* ===== 图片 ===== */
-.vp-doc img {
+.vp-doc {
+  counter-reset: figure-counter;
+}
+
+.vp-doc figure {
+  display: table;
+  margin: 1.5rem auto;
+  counter-increment: figure-counter;
+}
+
+.vp-doc figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vp-doc figure figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc figure figcaption::before {
+  content: "图 " counter(figure-counter) "：";
+  font-weight: 600;
+}
+
+/* 页面内非 figure 包裹的图片（如有）保持兼容 */
+.vp-doc > p > img {
   display: block;
   max-width: 100%;
   height: auto;
