@@ -67,6 +67,48 @@
   margin-bottom: 0.5em;
 }
 
+/* ===== 标题折叠/展开 ===== */
+.vp-doc .collapsible-heading {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 折叠指示三角 */
+.vp-doc .collapsible-heading::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--vp-c-text-2);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  margin-right: 2px;
+}
+
+.vp-doc .collapsible-heading.collapsed::before {
+  transform: rotate(-90deg);
+}
+
+/* 内容折叠动画 */
+.vp-doc .collapsible-section {
+  overflow: hidden;
+  transition: opacity 0.2s ease, max-height 0.3s ease;
+}
+
+.vp-doc .collapsible-section.collapsed {
+  display: none;
+}
+
+/* hover 时三角颜色加深 */
+.vp-doc .collapsible-heading:hover::before {
+  border-top-color: var(--vp-c-brand-1);
+}
+
 /* ===== 链接 ===== */
 .vp-doc a {
   text-decoration: none;

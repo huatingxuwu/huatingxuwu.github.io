@@ -1,5 +1,6 @@
 import DefaultTheme from 'vitepress/theme'
 import './styles/custom.css'
+import './scripts/collapsible-headers.js'
 import ArchiveView from './components/ArchiveView.vue'
 import BlogIndex from './components/BlogIndex.vue'
 import TagsView from './components/TagsView.vue'
